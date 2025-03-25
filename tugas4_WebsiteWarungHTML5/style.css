@@ -1,0 +1,225 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #333;
+    background-color: #f9f8f6;
+    background-image: url("background2.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.wrapper {
+    width: 90%;
+    max-width: 940px;
+    margin: 20px auto;
+    border: 2px solid #8B4513;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.atas {
+    background: #8B4513; /* Brown color */
+    height: 120px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.atas h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.atas h2 {
+    font-size: 24px;
+    font-style: italic;
+}
+
+/* Navigation Styles */
+header {
+    height: auto;
+}
+
+nav {
+    clear: both;
+    color: #ffffff;
+    background-color: #A0522D; /* SaddleBrown */
+    height: 50px;
+    padding: 10px 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+nav li a:hover, nav li a.current {
+    color: #FFD700; /* Gold */
+    background-color: #8B4513;
+    border-radius: 3px;
+}
+
+/* Main Content Styles */
+section.courses {
+    float: left;
+    width: 70%;
+    padding: 20px;
+}
+
+article {
+    clear: both;
+    overflow: auto;
+    width: 100%;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+article:last-child {
+    border-bottom: none;
+}
+
+hgroup {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+hgroup h2 {
+    color: #8B4513;
+    font-size: 24px;
+}
+
+hgroup h3 {
+    color: #666;
+    font-size: 18px;
+    font-style: italic;
+}
+
+figure {
+    float: left;
+    width: 250px;
+    height: auto;
+    padding: 5px;
+    margin: 0 20px 10px 0;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    margin-top: 5px;
+    color: #666;
+}
+
+article p {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+/* Sidebar Styles */
+aside {
+    float: right;
+    width: 30%;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.popular-recipes, .contact-details, .thanks {
+    margin-bottom: 30px;
+}
+
+.popular-recipes h2, .contact-details h2, .thanks h2 {
+    color: #8B4513;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popular-recipes ul {
+    list-style-type: none;
+}
+
+.popular-recipes li {
+    margin-bottom: 10px;
+}
+
+.popular-recipes a {
+    color: #8B4513;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.popular-recipes a:hover {
+    color: #A0522D;
+    text-decoration: underline;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+/* Footer Styles */
+footer {
+    clear: both;
+    color: #ffffff;
+    background-color: #A0522D;
+    height: auto;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section.courses, aside {
+        float: none;
+        width: 100%;
+    }
+    
+    figure {
+        float: none;
+        width: 100%;
+        margin: 0 0 15px 0;
+    }
+    
+    nav li {
+        display: block;
+        margin: 5px 0;
+    }
+}
