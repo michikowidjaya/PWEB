@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    margin: 0;
+    padding: 0;
+    background-color: #ffe5e5; /* Light pink background */
+    color: #333;
+    transition: background-color 0.5s ease;
+}
+
+header {
+    background-color: #ffb6c1; /* Pink header */
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive; /* Updated font */
+    margin: 0;
+    font-size: 2.8em; /* Slightly larger for Pacifico */
+}
+
+nav {
+    text-align: center;
+    padding: 1em;
+    background-color: #ffc0cb; /* Lighter pink for nav */
+}
+
+nav button {
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    background-color: #ff69b4; /* Hot pink buttons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+    background-color: #ff1493; /* Deeper pink on hover */
+}
+
+main {
+    padding: 20px;
+    min-height: 60vh; /* Ensure content area is sufficiently large */
+    text-align: center;
+    font-size: 1.1em; /* Slightly increase base font size for Poppins */
+}
+
+#content {
+    background-color: #fff0f5; /* Lavender blush for content area */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#content h2 {
+    font-family: 'Pacifico', cursive; /* Updated font */
+    color: #ff1493; /* Deep pink for subheadings */
+    font-size: 2.2em;
+}
+
+#content h3 {
+    font-family: 'Pacifico', cursive; /* Updated font */
+    color: #db7093; /* Pale violet red for smaller headings */
+    font-size: 1.8em;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #ffb6c1; /* Pink footer */
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Basic animation for content loading */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Placeholder for more complex styles */
+.interactive-element {
+    background-color: #ffb6c1;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive-element:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Gallery specific styles */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Spacing between gallery items */
+    padding: 20px 0;
+}
+
+.gallery-item {
+    background-color: #ffadc0; /* Lighter pink for gallery items */
+    border: 2px solid #ff69b4; /* Hot pink border */
+    color: #fff;
+    padding: 0; /* Remove padding to let image fill */
+    width: 200px; /* Fixed width for gallery items */
+    height: 200px; /* Fixed height for gallery items */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* To contain images if they are larger */
+    text-align: center;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    max-height: 150px; /* Leave space for title */
+    display: block;
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top of the image */
+}
+
+.gallery-item-title {
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 5px;
+    color: #500a2c; /* Darker pink for text */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05) translateY(-5px); /* Slightly enlarge and lift on hover */
+    box-shadow: 0 8px 15px rgba(255, 105, 180, 0.5); /* Pink shadow on hover */
+}
+
+/* Modal for displaying larger image or more details */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); /* Dim background */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff0f5; /* Lavender blush */
+    margin: auto;
+    padding: 30px;
+    border: 5px solid #ff69b4; /* Hot pink border */
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease-out;
+}
+
+.modal-close {
+    color: #ff1493; /* Deep pink */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #c71585; /* Medium violet red */
+    text-decoration: none;
+}
+
+#modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#modal-title {
+    font-family: 'Pacifico', cursive; /* Updated font */
+    color: #ff1493;
+}
+
+#modal-caption {
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    font-size: 1.1em;
+    color: #333;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Contact Form Enhancements */
+#contact-form {
+    background-color: #fff0f5; /* Lavender blush, consistent with content area */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ffb6c1; /* Soft pink border */
+}
+
+#contact-form div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ff69b4; /* Hot pink labels */
+    font-weight: 600; /* Poppins bold */
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ffc0cb; /* Lighter pink border for inputs */
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    font-size: 1em;
+    background-color: #fff; /* White background for inputs */
+    color: #333;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    border-color: #ff69b4; /* Hot pink border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5); /* Pink glow on focus */
+}
+
+#contact-form button[type="submit"] {
+    background-color: #ff1493; /* Deeper pink for submit button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px auto 0; /* Center the button */
+}
+
+#contact-form button[type="submit"]:hover {
+    background-color: #c71585; /* Medium violet red on hover */
+}
