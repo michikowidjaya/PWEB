@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manajemen User (MongoDB)</title>
+    <style>
+        body { font-family: sans-serif; }
+        .container { width: 80%; margin: auto; }
+        #user-list { margin-top: 20px; }
+        .user-item { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; }
+        input { padding: 5px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manajemen User (NoSQL - MongoDB)</h1>
+
+        <form id="addUserForm">
+            <h3>Tambah User Baru</h3>
+            <p><label>Nama: <input type="text" name="name" required></label></p>
+            <p><label>Email: <input type="email" name="email" required></label></p>
+            <p><label>Umur: <input type="number" name="age" required></label></p>
+            <p><label>Hobi (pisahkan dengan koma): <input type="text" name="hobbies"></label></p>
+            <button type="submit">Tambah User</button>
+        </form>
+
+        <hr>
+        <h2>Daftar User</h2>
+        <div id="user-list">Memuat data...</div>
+    </div>
+
+    <script>
+        const userForm = document.getElementById('addUserForm');
+        const userListDiv = document.getElementById('user-list');
+
+        // Fungsi untuk menampilkan semua user
+        async function fetchUsers() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+
+            userListDiv.innerHTML = ''; // Kosongkan daftar
+            users.forEach(user => {
+                const hobbies = user.hobbies && user.hobbies.length > 0 ? user.hobbies.join(', ') : 'Tidak ada';
+                const userDiv = document.createElement('div');
+                userDiv.className = 'user-item';
+                userDiv.innerHTML = `
+                    <strong>Nama:</strong> ${user.name}<br>
+                    <strong>Email:</strong> ${user.email}<br>
+                    <strong>Umur:</strong> ${user.age}<br>
+                    <strong>Hobi:</strong> ${hobbies}
+                `;
+                userListDiv.appendChild(userDiv);
+            });
+        }
+
+        // Fungsi untuk menambah user
+        userForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(userForm);
+            const hobbies = formData.get('hobbies').split(',').map(s => s.trim()).filter(s => s);
+
+            const userData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                age: formData.get('age'),
+                ...(hobbies.length > 0 && { hobbies: hobbies }) // Hanya tambahkan hobi jika ada isinya
+            };
+
+            await fetch('/api/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            });
+
+            userForm.reset(); // Kosongkan form
+            fetchUsers(); // Refresh daftar user
+        });
+
+        // Panggil fungsi fetchUsers saat halaman pertama kali dimuat
+        fetchUsers();
+    </script>
+</body>
+</html>
